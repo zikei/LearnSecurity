@@ -1,5 +1,7 @@
 package com.example.learnSecurity.entity;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 
@@ -8,7 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Memberテーブル：エンティティ
+ * アカウントテーブル：エンティティ
  */
 @Data
 @NoArgsConstructor
@@ -26,4 +28,8 @@ public class Account {
 	/** パスワード */
 	@Column(value="password")
 	private String password;
+	
+	/** 最終ログイン日 */
+	@Column(value="lastlogin")
+	private Date LastLogin;
 }
