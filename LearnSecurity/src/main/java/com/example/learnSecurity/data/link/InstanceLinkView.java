@@ -1,5 +1,7 @@
 package com.example.learnSecurity.data.link;
 
+import com.example.learnSecurity.entity.Instance;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,4 +16,9 @@ public class InstanceLinkView {
 	
 	/** 実習インスタンス名 */
 	private String InsName;
+	
+	public InstanceLinkView(Instance ins) {
+		this.InsId   = ins.getInstanceId();
+		this.InsName = ins.getInstanceName();
+	}
 }
