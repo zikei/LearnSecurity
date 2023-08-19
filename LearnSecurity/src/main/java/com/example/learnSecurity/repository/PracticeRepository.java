@@ -1,4 +1,4 @@
-package com.example.learnSecurity.repositry;
+package com.example.learnSecurity.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

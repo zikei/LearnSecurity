@@ -14,12 +14,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Practice {
-	/** 脆弱性ID:PK */
+	/** 実習ID:PK */
 	@Id
 	@Column(value="practiceid")
 	private Integer practiceId;
 	
-	/** 脆弱性名 */
+	/** 実習名:unique */
 	@Column(value="practicename")
 	private String practiceName;
 	
