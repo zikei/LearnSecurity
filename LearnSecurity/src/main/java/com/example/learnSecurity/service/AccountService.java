@@ -4,4 +4,7 @@ package com.example.learnSecurity.service;
 public interface AccountService {
 	/** ログインユーザId取得 */
 	Integer selectLoginUserId();
+	
+	/** ログインユーザか判定 */
+	boolean isLoginUser(Integer userId);
 }

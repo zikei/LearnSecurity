@@ -10,4 +10,9 @@ public class AccountServiceImplTmp implements AccountService{
 	public Integer selectLoginUserId() {
 		return 1;
 	}
+
+	@Override
+	public boolean isLoginUser(Integer userId) {
+		return true;
+	}
 }
