@@ -15,11 +15,11 @@
 	<header class="container-fleld">
 		<div class="col-12 row pt-3 pb-2">
 			<div class="col-8">
-				<h1 class="ml-5 head_title">Learn Security</h1>
+				<h1 class="ml-5 head_title">XLS</h1>
 			</div>
 			
 			<div class="col-4 text-center align-center-item p-1">
-				<span class="userName">User : testuser</span>
+				<span class="userName">ユーザ名 : testuser</span>
 			</div>
 		</div>
 	</header>
@@ -28,18 +28,16 @@
     <div id = "master_box" class="container-field">
     <div class="d-flex row m-0 p-0 w-auto h-auto">
         <div class="container col-10 main_box">
-				<h2 class="text-center m-4 p-2 contents_name">Play Security Practice</h2>
+				<h2 class="text-center m-4 p-2 contents_name">セキュリティ実習</h2>
 				<div class="d-flex justify-content-end  mt-5 mb-3">
 				<a class="btn btn-primary create_button" style = "color:white;">インスタンス作成</a>
 				</div>
 				<div class="border_box pt-2 pb-4">
 				<div class="bottom_box row justify-content-center">
-					<div class="col-5 text-center Practice_name"><span>PracticeID</span></div>
-					<div class="col-5 text-center Practice_name"><span>PracticeName</span></div>
+					<div class="col-7 text-center Practice_name"><span>インスタンス名</span></div>
 				</div>
 				
 				<div class="column_box row justify-content-center" th:each="insLink : ${insList}">
-					<div class="col-5 text-center P_name"><span th:text = "${insLink.InsId}"></span></div>
 					<div class="col-5 text-center C_name"><a><span th:text = "${insLink.InsName}"></span></a></div>
 				</div>
 				</div>
@@ -53,21 +51,21 @@
                 <li class="nav-item">
                     <div class="Practice-nav text-center">
                         <img src="/img/鉄壁のセキュリティ.png" height="60" width="60" alt="PracticeSecurity Icon"><br>
-                        <span class"nav-name">Practice <br> Security</span>
+                        <span class"nav-name">セキュリティ<br>実習</span>
                     </div>
                 </li>
 
                 <li class="nav-item">
                     <div class="Study-nav text-center">
                         <img src="/img/積み重ねた本.png" height="60" width="60" alt="StudySecurity Icon"><br>
-                        <span class"nav-name">Study<br>Security</span>
+                        <span class"nav-name">セキュリティ<br>講義</span>
                     </div>
                 </li>
 
                 <li class="nav-item">
                     <div class="Setting-nav text-center">
                         <img src="/img/歯車.png" height="60" width="60" alt="Settings Icon"><br>
-                        <span class"nav-name">Settings</span>
+                        <span class"nav-name">設定</span>
                     </div>
                 </li>
             </ul>

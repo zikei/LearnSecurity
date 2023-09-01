@@ -24,7 +24,7 @@ ul li{
 
 .contents_name{
 	font-size: 56px;
-	font-family: 'Crete Round', serif;
+	font-family: 'Noto Sans JP', sans-serif;
 	border-bottom: 4px solid;
 }
 
@@ -51,7 +51,7 @@ ul li{
 
 .bottom_box{
 	border-bottom: 3px solid gray;
-	margin: 10px 25px;
+	margin: 10px 50px;
 }
 
 .column_box{
@@ -60,7 +60,11 @@ ul li{
 }
 
 .nav-list{
-	font-size: 20px;
+	font-size: 16px;
 	color: white;
 	font-family: 'Noto Sans JP', sans-serif;
+}
+
+.nav-item img{
+	margin: 10px 0;
 }
