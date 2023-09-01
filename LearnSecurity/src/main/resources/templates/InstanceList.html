@@ -34,11 +34,11 @@
 				</div>
 				<div class="border_box pt-2 pb-4">
 				<div class="bottom_box row justify-content-center">
-					<div class="col-7 text-center Practice_name"><span>インスタンス名</span></div>
+					<div class="col-7 text-center Practice_name"><a><span>インスタンス名</span></a></div>
 				</div>
 				
 				<div class="column_box row justify-content-center" th:each="insLink : ${insList}">
-					<div class="col-5 text-center C_name"><a><span th:text = "${insLink.InsName}"></span></a></div>
+					<div class="col-5 text-center C_name"><a th:href = "@{'/LearnSecurity/Practice/{insLink.insId}'}"><span th:text = "${insLink.InsName}"></span></a></div>
 				</div>
 				</div>
         </div>
