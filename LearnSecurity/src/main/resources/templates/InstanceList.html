@@ -25,10 +25,13 @@
 	</header>
 	
 	<main>
-    <div id = "main_box" class="container-field">
+    <div id = "master_box" class="container-field">
     <div class="d-flex row m-0 p-0 w-auto h-auto">
-        <div class="container col-10">
-				<h2 class="text-center m-5 p-2 contents_name">Play Security Practice</h2>
+        <div class="container col-10 main_box">
+				<h2 class="text-center m-4 p-2 contents_name">Play Security Practice</h2>
+				<div class="d-flex justify-content-end  mt-5 mb-3">
+				<a class="btn btn-primary create_button" style = "color:white;">インスタンス作成</a>
+				</div>
 				<div class="border_box pt-2 pb-4">
 				<div class="bottom_box row justify-content-center">
 					<div class="col-5 text-center Practice_name"><span>PracticeID</span></div>
@@ -41,7 +44,10 @@
 				</div>
 				</div>
         </div>
+        <!--colを調整するための余白-->
         <div class="col-1"></div>
+        
+        <!--ここからNavList -->
         <div class="col-1 nav-list">
             <ul class="list-unstyled"> <!-- Bootstrap リストスタイルを削除 -->
                 <li class="nav-item">
