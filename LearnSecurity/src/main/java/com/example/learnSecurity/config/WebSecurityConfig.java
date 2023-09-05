@@ -30,6 +30,7 @@ public class WebSecurityConfig {
 					.requestMatchers("/img/**").permitAll()
 				)
 			.authorizeHttpRequests((requests) -> requests
+				.requestMatchers("/LearnSecurity/","/LearnSecurity/Home").permitAll()
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
