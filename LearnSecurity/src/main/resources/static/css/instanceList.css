@@ -24,7 +24,7 @@ ul li{
 
 .contents_name{
 	font-size: 56px;
-	font-family: 'Noto Sans JP', sans-serif;
+	font-family: 'Kiwi Maru', serif;
 	border-bottom: 4px solid;
 }
 
@@ -40,7 +40,7 @@ ul li{
 
 .Practice_name{
 	font-size: 32px;
-	font-family: 'Noto Sans JP', sans-serif;
+	font-family: 'Kiwi Maru', serif;
 	font-weight: bold;
 }
 
@@ -62,7 +62,7 @@ ul li{
 .nav-list{
 	font-size: 16px;
 	color: white;
-	font-family: 'Noto Sans JP', sans-serif;
+	font-family: 'Kiwi Maru', serif;
 }
 
 .nav-item img{
