@@ -14,6 +14,11 @@ ul li{
 	margin: 82.5% 0;
 }
 
+#create {
+	color:white;
+	font-family: 'Kiwi Maru', serif;
+}
+
 .nav-list{
 	background-color: gray;
 }
