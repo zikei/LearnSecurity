@@ -11,6 +11,8 @@ header{
 h1{
 	font-size: 46px;
 	font-weight: 900;
+	font-family: 'Merriweather', serif;
+	font-style: oblique;
 }
 
 #userName{
