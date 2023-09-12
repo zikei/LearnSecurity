@@ -13,4 +13,10 @@ public class AccountController {
 	public String Mypage() {
 		return "Main";
 	}
+	
+	/** アカウント登録ページ　*/
+	@GetMapping("/Entry")
+	public String AccountEntryView() {
+		return "accountRegister";
+	}
 }
