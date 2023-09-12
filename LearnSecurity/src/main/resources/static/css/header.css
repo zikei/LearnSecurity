@@ -2,10 +2,14 @@
 
 header{
 	background-color: #00ff00;
-	color: white;
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: bold;
 	font-size: 32px;
+}
+
+#header_logo{
+	color: white;
+	text-decoration:none;
 }
 
 h1{
@@ -17,4 +21,5 @@ h1{
 
 #userName{
 	font-family: 'Kiwi Maru', serif;
+	color: white;
 }

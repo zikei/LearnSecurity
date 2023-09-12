@@ -6,31 +6,34 @@
     <title>LearnSecurity - ログイン</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Merriweather&family=Zen+Antique&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/header.css">
 </head>
 
 <body>
     <header>
-        <div class="header_box container-fluid">
-            <div class="col-12 row align-items-center">
+        <div class="container-fleld">
+            <div class="col-12 row pt-3 pb-2">
                 <div class="col-8">
-                    <h1 class="title ml-5">LearnSecurity</h1>
+                    <h1 class="title ml-5"><a href="/LearnSecurity/Home" id = "header_logo">XLS</a></h1>
                 </div>
+                <div class="col-4"></div>
+                <!--
                 <div class="col-4 text-right">
-                    <!--ユーザ認証済みなのであれば -->
+                    <!--ユーザ認証済みなのであれば 
                     <th:block sec:authorize="isAuthenticated()">
                         <form method="post" th:action="@{/LearnSecurity/Logout}">
                             <button class="btn logbtn btn-primary mr-5" role="logout" type="submit">ログアウト</button>
                         </form>
                     </th:block>
-                    <!--ユーザ認証済みではないのであれば -->
+                    <!--ユーザ認証済みではないのであれば
                     <th:block sec:authorize="isAnonymous()">
                         <a class="btn logbtn btn-primary mr-5" th:href="@{/LearnSecurity/Login}" role="login">ログイン</a>
                     </th:block>
                 </div>
+                -->
             </div>
         </div>
     </header>
@@ -39,14 +42,14 @@
 
             <div class="container col-12">
                 <div class="row justify-content-center">
-                    <div class="col-6 md-4">
-                        <h2 class="mb-4 text-center font-weight-bold">ログイン</h2>
+                    <div class="col-4 md-4">
+                        <h2 id="content_name" class="my-4 text-center font-weight-bold">ログイン</h2>
                         <div th:if="${param.error}">
                             <span class="text-nowrap bd-highlight　text-center m"
                                 style="width: 10rem;">※ID、またはパスワードが間違っています</span>
                         </div>
                         <form th:action="@{/LearnSecurity/Login}" method="post">
-                            <div class="form-group mt-3">
+                            <div class="form-group mt-5">
                                 <label for="username" class="font-weight-bold">ユーザー名</label>
                                 <input type="text" class="form-control" id="username" name="username">
                             </div>
