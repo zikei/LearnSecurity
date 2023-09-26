@@ -6,8 +6,6 @@ services:
     container_name: xls-db
     volumes:
       - db-data-volume:/var/lib/mysql
-    ports:
-      - "3307:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
       - MYSQL_DATABASE=${DB_DATABASE}
