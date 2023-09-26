@@ -1,0 +1,27 @@
+version: "1"
+
+services:
+  db:
+    build: ./db
+    container_name: xls-db
+    volumes:
+      - db-data-volume:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+
+  app:
+    build:
+      context: .
+      dockerfile: ./LearnSecurity/Dockerfile
+    env_file: ./.env
+    ports:
+      - "80:8080"
+
+volumes:
+  db-data-volume:
+    name: xls-db
