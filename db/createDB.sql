@@ -4,46 +4,49 @@ create database xls;
 
 use xls
 
+-- ユーザ情報
 create table Account(
-  UserID int auto_increment,
+  UserId int auto_increment,
   UserName varchar(50) unique,
   Password varchar(64),
   LastLogin date,
-  primary key(UserID)
+  primary key(UserId)
 );
 
+-- 実習情報
 create table Practice(
-  PracticeID int auto_increment,
+  PracticeId int auto_increment,
   PracticeName varchar(100) unique,
-  ProjectPath varchar(64),
-  DBCreatePath varchar(64),
-  primary key(PracticeID)
+  DirPath varchar(64),
+  PracticeInfo text,
+  primary key(PracticeId)
 );
 
-create table Instance(
-  InstanceID int auto_increment,
-  InstanceName varchar(100),
-  DBPath varchar(64),
-  UserID int,
-  PracticeID int,
-  primary key(InstanceID),
-  foreign key(UserID) references Account(UserID) on update cascade on delete cascade,
-  foreign key(PracticeID) references Practice(PracticeID) on update cascade on delete cascade
-);
-
+-- 講義情報
 create table Lesson(
-  LessonID int auto_increment,
+  LessonId int auto_increment,
   LessonName varchar(100) unique,
   LessonPath varchar(64),
-  primary key(LessonID)
+  primary key(LessonId)
 );
 
+-- 実習講義依存関係
+create table PracticeLesson(
+  PracticeLessonId int auto_increment,
+  LessonId int,
+  PracticeId int,
+  primary key(PracticeLessonId),
+  foreign key(LessonId) references Lesson(LessonId) on update cascade on delete cascade,
+  foreign key(PracticeId) references Practice(PracticeId) on update cascade on delete cascade
+);
+
+-- 修了講義情報
 create table Completion(
-  CompletionID int auto_increment,
-  UserID int,
-  LessonID int,
+  CompletionId int auto_increment,
+  UserId int,
+  LessonId int,
   CompletionDate date,
-  primary key(CompletionID),
-  foreign key(UserID) references Account(UserID) on update cascade on delete cascade,
-  foreign key(LessonID) references Lesson(LessonID) on update cascade on delete cascade
+  primary key(CompletionId),
+  foreign key(UserId) references Account(UserId) on update cascade on delete cascade,
+  foreign key(LessonId) references Lesson(LessonId) on update cascade on delete cascade
 );
