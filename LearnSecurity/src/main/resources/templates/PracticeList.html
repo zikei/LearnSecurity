@@ -30,17 +30,20 @@
     <div class="d-flex row m-0 p-0 w-auto h-auto">
         <div class="container col-10 main_box">
 				<h2 class="text-center m-4 p-2 contents_name">セキュリティ実習</h2>
-				<div class="d-flex justify-content-end  mt-5 mb-3">
-				<a id = "create" class="btn btn-primary create_button">インスタンス作成</a>
-				</div>
-				<div class="border_box pt-2 pb-4">
+				<div class="border_box pt-2 pb-4 mt-5">
 				<div class="bottom_box row justify-content-center">
-					<div class="col-7 text-center Practice_name"><a><span>インスタンス名</span></a></div>
+					<div class="col-7 text-center Practice_name"><a><span>インスタンス一覧</span></a></div>
 				</div>
 				
-				<div class="column_box row justify-content-center" th:each="insLink : ${insList}">
-					<div class="col-5 text-center C_name"><a th:href = "@{'/LearnSecurity/Practice/{insLink.insId}'}"><span th:text = "${insLink.InsName}"></span></a></div>
+				<!--後々説明いれるかもしれない -->
+				<div class="column_box row justify-content-center">
+					<div class="col-auto"></div>
+					<div class="col-5 text-center">
+						<a href="#">sqlインジェクション</a>
+					</div>
+					<div class="col-auto"></div>
 				</div>
+				
 				</div>
         </div>
         <!--colを調整するための余白-->
