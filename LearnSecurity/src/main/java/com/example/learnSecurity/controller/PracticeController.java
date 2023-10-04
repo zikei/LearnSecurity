@@ -44,7 +44,7 @@ public class PracticeController {
 		
 		model.addAttribute("insList", insLinkList);
 		
-		return "InstanceList";
+		return "PracticeList";
 	}
 	
 	/** 実習アクセス */
