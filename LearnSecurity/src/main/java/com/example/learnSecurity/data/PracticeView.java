@@ -26,10 +26,10 @@ public class PracticeView {
 	/** 関連講義リンクリスト */
 	private List<LessonLinkView> relationLessonList;
 	
-	public PracticeView(Practice practice, List<LessonLinkView> relationLessonList) {
+	public PracticeView(Practice practice, String practiceInfo, List<LessonLinkView> relationLessonList) {
 		this.practiceId   = practice.getPracticeId();
 		this.practiceName = practice.getPracticeName();
-		this.practiceInfo = practice.getPracticeInfo();
+		this.practiceInfo = practiceInfo;
 		this.relationLessonList = relationLessonList;
 	}
 }
