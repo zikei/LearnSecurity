@@ -36,10 +36,10 @@
 				</div>
 				
 				<!--後々説明いれるかもしれない -->
-				<div class="column_box row justify-content-center" th:each="practiice : ${prac}">
+				<div class="column_box row justify-content-center" th:each="practice : ${pracList}">
 					<div class="col-auto"></div>
 					<div class="col-5 text-center">
-						<a th:href = "@{'/LearnSecurity/Practice/{practice.practiceId}'}">
+						<a th:href = "@{'/LearnSecurity/'+ 'Practice/' + ${practice.practiceId}}">
 							<span th:text = "${practice.practiceName}"></span>
 						</a>
 					</div>
