@@ -26,8 +26,4 @@ public class Practice {
 	/** 実習プロジェクトパス */
 	@Column(value="dirpath")
 	private String dirPath;
-	
-	/** 実習プロジェクト説明 */
-	@Column(value="practiceinfo")
-	private String practiceInfo;
 }
