@@ -53,5 +53,5 @@ create table Completion(
 
 -- 初期データ注入
 -- 実習情報
-insert into Practice (PracticeName,DirPath,PracticeInfo)
-  values('SQLインジェクション','/SqlInjection','概要');
+insert into Practice (PracticeName,DirPath)
+  values('SQLインジェクション','/SqlInjection');
