@@ -18,7 +18,6 @@ create table Practice(
   PracticeId int auto_increment,
   PracticeName varchar(100) unique,
   DirPath varchar(64),
-  PracticeInfo text,
   primary key(PracticeId)
 );
 
