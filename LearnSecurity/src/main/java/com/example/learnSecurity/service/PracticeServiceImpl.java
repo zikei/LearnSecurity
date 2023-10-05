@@ -4,6 +4,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import com.example.learnSecurity.data.link.LessonLinkView;
 import com.example.learnSecurity.entity.Practice;
 import com.example.learnSecurity.exception.NotFoundException;
 import com.example.learnSecurity.repository.PracticeRepository;
+import com.vladsch.flexmark.ext.tables.TablesExtension;
 import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.ast.Node;
@@ -58,6 +60,8 @@ public class PracticeServiceImpl  implements PracticeService{
 	/** マークダウンファイルをHTML形式に変換 */
 	private String markdownfileToHtml(String filePath) {
 		MutableDataSet options = new MutableDataSet();
+		options.set(Parser.EXTENSIONS, 
+				Arrays.asList(TablesExtension.create()));
 
 	    Parser parser = Parser.builder(options).build();
 	    HtmlRenderer renderer = HtmlRenderer.builder(options).build();
@@ -68,7 +72,7 @@ public class PracticeServiceImpl  implements PracticeService{
 		} catch (IOException e) {
 			return "";
 		}
-	    String markdown = String.join("\n", lines);
+	    String markdown = String.join("  \n", lines);
 
 	    Node document = parser.parse(markdown);
 	    String html = renderer.render(document);
