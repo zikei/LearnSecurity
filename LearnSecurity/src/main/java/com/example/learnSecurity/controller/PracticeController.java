@@ -1,7 +1,12 @@
 package com.example.learnSecurity.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +21,8 @@ import com.example.learnSecurity.entity.Practice;
 import com.example.learnSecurity.exception.NotFoundException;
 import com.example.learnSecurity.service.AccountService;
 import com.example.learnSecurity.service.PracticeService;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 /** 実習コントローラ */
 @Controller
@@ -56,7 +63,57 @@ public class PracticeController {
 		return "DLpractice";
 	}
 	
+	/** 実習ダウンロード 
+	 * @throws IOException */
+	@GetMapping("/{pracId}/Download")
+	public void PracticeDL(@PathVariable Integer pracId, HttpServletResponse res) throws IOException{
+		try {
+			String dirPath = practiceService.selectPracticeDirPath(pracId);
+			res.setContentType("application/zip");
+	        res.setHeader("Content-Disposition", "attachment; filename=" + zipName(dirPath));
+			dirZipDL(dirPath, res);
+		} catch (NotFoundException e) {
+			res.sendError(HttpServletResponse.SC_NOT_FOUND);
+		} catch (IOException e) {
+			e.printStackTrace();
+			res.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 /* ====================================================================================================================== */
+	
+	/** Zipファイル名を取得 
+	 * @throws NotFoundException */
+	private String zipName(String dirPath) throws NotFoundException {
+		String zipName = dirPath.substring(dirPath.lastIndexOf("/") + 1) + ".zip";
+		return zipName;
+	}
+	
+	/** zipダウンロード 
+	 * @throws IOException */
+	private void dirZipDL(String dirPath, HttpServletResponse res) throws IOException {
+        ZipOutputStream zos = new ZipOutputStream(res.getOutputStream());
+        File dir = new File(dirPath);
+        File[] files = dir.listFiles();
+        addFilesForZip(files, zos, "");
+        zos.close();
+	}
+	
+	/** ファイルをzipファイルに追加　
+	 * @throws IOException */
+	private void addFilesForZip(File[] files, ZipOutputStream zos, String dirPath) throws IOException {
+		for (File file : files) {
+			String entry = dirPath + file.getName();
+        	if(file.isDirectory()) {
+        		entry += "/";
+        		zos.putNextEntry(new ZipEntry(entry));
+        		addFilesForZip(file.listFiles(), zos, entry);
+        	}else {
+        		zos.putNextEntry(new ZipEntry(entry));
+                Files.copy(file.toPath(), zos);
+        	}
+        }
+	}
 	
 	/** 実習リストをPracticeLinkViewListに変換 */
 	private List<PracticeLinkView> makePracticeLinkViewList(List<Practice> pracList){
