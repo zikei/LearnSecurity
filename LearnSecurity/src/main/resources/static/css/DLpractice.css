@@ -46,9 +46,15 @@ ul li{
     line-height: 2;
 }
 
+.title-box{
+	padding-bottom: 20px;
+	border-bottom: #00ff00 solid 2px;
+}
+
 .contentFile{
-	font-size: 36px;
+	font-size: 46px;
 	font-family: 'Kiwi Maru', serif;
+	font-weight: bold;
 }
 
 .bottom_box{
@@ -109,14 +115,62 @@ ul li{
 
 .ReadMe{
 	font-family: 'Kiwi Maru', serif;
-	font-size: 32px;
+	font-size: 24px;
+}
+
+.ReadMe ol{
+	margin-top: 5%;
+	margin-left: 10%;
+}
+
+.ReadMe h1{
+	margin-top: 5%;
+	padding-bottom: 1%;
+	border-bottom: #00ff00 solid 2px;
+}
+
+.ReadMe a, .ReadMe p{
+	margin-top: 2%;
+	font-size: 28px;
+}
+
+.ReadMe h2{
+	font-weight: bold;
+}
+
+
+table{
+	width: 100%;
+    border-collapse: collapse;
+	margin:6% 4%;
+}
+
+th {
+    background-color: #00ff00;
+    font-weight: bold;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+td {
+    padding: 8px;
+    border: 1px solid l#ddd
+}
+
+tr:nth-child(odd) {
+    background-color: #f9f9f9;
 }
 
 .chainStudy{
 	font-family: 'Kiwi Maru', serif;
-	font-size: 22px;
+	font-size: 22px;;
 }
 
 .Study-tag{
-	font-size: 28px;
+	font-size: 36px;
+	padding-bottom: 1%;
+	margin-right:4%;
+	border-bottom: #00ff00 solid 2px;
+
 }
