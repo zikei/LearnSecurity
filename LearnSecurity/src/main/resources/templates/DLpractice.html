@@ -36,8 +36,8 @@
 						<span th:text = "${practice.practiceName}"></span>
     				</div>
 				<!--ダウンロード -->
-					<div class="col-auto Download">
-						<a th:href="@{'/LearnSecurity/' + 'Practice/' + ${practice.practiceId} + /Download}" class="btn btn_deza">ダウンロード</a>
+					<div class="col-auto Download" >
+						<a th:href="@{'/LearnSecurity/Practice/' + ${practice.practiceId} + '/Download'}" class="btn btn_deza">ダウンロード</a>
 					</div>
 				</div>
 				
