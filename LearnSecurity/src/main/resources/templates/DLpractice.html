@@ -28,29 +28,39 @@
 	<main>
     <div id = "master_box" class="container-field">
     <div class="d-flex row m-0 p-0 w-auto h-auto">
-        <div class="container col-10 main_box"> <!-- th:each="insLink : ${insList}"-->
-                <div class="row justify-content-center mt-5">
-					<!--実習名 -->
+        <div class="container col-10 main_box">
+				<div class="border_box pt-2 pb-4 mt-5">
+					
+				<div class="row justify-content-center">
 					<div class="col-auto contentFile">
 						<span>sql インジェクション</span>
-					</div>
-					<!--ダウンロード -->
+    				</div>
+				<!--ダウンロード -->
 					<div class="col-auto Download">
-						<a href = "#" class = "btn btn_deza">戻る</a>
+						<a href="#" class="btn btn_deza">ダウンロード</a>
 					</div>
-                </div>
-                <br>
-                <!--ReadMe(説明 / 概要) -->
-				<div class="ReadMe">
-					<a href="#">ReadMe</a>
 				</div>
+				
 				<br>
+				<!--ReadMe(説明 / 概要) -->
+				<div class="row">
+    				<div class="col-3"></div>
+    				<div class="col-auto ReadMe">
+        				<a href="#">ReadMe</a>
+    				</div>
+    				<div class="col-3"></div>
+    			</div>
 				<!--関連講義 -->
-				<div class="chainStudy">
-					
+				<div class="row">
+    				<div class="col-3"></div>
+    				<div class="col-auto chainStudy mb-3">
+						<h3 class="Study-tag mt-5">関連講義</h3>
+						<a href="#" class="">SQLインジェクション</a>
+    				</div>
+    				<div class="col-3"></div>
+    			</div>
+				
 				</div>
-				
-				
         </div>
         <!--colを調整するための余白-->
         <div class="col-1"></div>
