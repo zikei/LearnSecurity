@@ -24,10 +24,6 @@ public class Practice {
 	private String practiceName;
 	
 	/** 実習プロジェクトパス */
-	@Column(value="projectpath")
-	private String projectPath;
-	
-	/** 実習プロジェクトDB作成SQLファイルパス */
-	@Column(value="dbcreatepath")
-	private String DbCreatePath;
+	@Column(value="dirpath")
+	private String dirPath;
 }

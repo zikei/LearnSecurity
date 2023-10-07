@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th = "http://www.thymeleaf.org" >
 <head>
-<title>LearnSecurity - Mypage</title>
+<title>LearnSecurity - インスタンス一覧</title>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/header.css">
-  <link rel="stylesheet" href="/css/Main.css">
+  <link rel="stylesheet" href="/css/PracticeList.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@1&family=Kaisei+Opti&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Noto+Sans+JP&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -27,11 +29,24 @@
     <div id = "master_box" class="container-field">
     <div class="d-flex row m-0 p-0 w-auto h-auto">
         <div class="container col-10 main_box">
-				<h2 class="text-center m-4 p-2 welcome_name">おかえりなさい！testuserさん！</h2><br>
+				<h2 class="text-center m-4 p-2 contents_name">セキュリティ実習</h2>
+				<div class="border_box pt-2 pb-4 mt-5">
+				<div class="bottom_box row justify-content-center">
+					<div class="col-7 text-center Practice_name"><a><span>実習一覧</span></a></div>
+				</div>
 				
-				<h3 class="content_name m-4 mt-5"><a href = "/LearnSecurity/Practice" style="color: black;">セキュリティ実習へ</a></h3>
-				<h3 class="content_name m-4 mt-5"><a href = "/LearnSecurity/Practice" style="color: black;">セキュリティ講義へ</a></h3>
+				<!--後々説明いれるかもしれない -->
+				<div class="column_box row justify-content-center" th:each="practice : ${pracList}">
+					<div class="col-auto"></div>
+					<div class="col-5 text-center">
+						<a th:href = "@{'/LearnSecurity/'+ 'Practice/' + ${practice.practiceId}}">
+							<span th:text = "${practice.practiceName}"></span>
+						</a>
+					</div>
+					<div class="col-auto"></div>
+				</div>
 				
+				</div>
         </div>
         <!--colを調整するための余白-->
         <div class="col-1"></div>

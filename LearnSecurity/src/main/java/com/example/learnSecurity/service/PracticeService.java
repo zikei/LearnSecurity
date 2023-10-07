@@ -2,8 +2,7 @@ package com.example.learnSecurity.service;
 
 import java.util.List;
 
-import com.example.learnSecurity.data.PracticeInstance;
-import com.example.learnSecurity.entity.Instance;
+import com.example.learnSecurity.data.PracticeView;
 import com.example.learnSecurity.entity.Practice;
 import com.example.learnSecurity.exception.NotFoundException;
 
@@ -12,10 +11,9 @@ public interface PracticeService {
 	/** 実習を全件取得 */
 	List<Practice> selectAllPractice();
 	
-	/** 指定したユーザの実習インスタンスを取得 */
-	List<Instance> selectInstanceByUserId(Integer userId);
+	/** 指定した実習表示情報を取得 */
+	PracticeView selectPracticeView(Integer practiceId) throws NotFoundException;
 	
-	/** 指定したインスタンスのデータを取得 
-	 * @throws NotFoundException */
-	PracticeInstance selectPracticeInstance(Integer insId) throws NotFoundException;
+	/** 指定した実習のディレクトリの絶対パスを取得 */
+	String selectPracticeDirPath(Integer practiceId) throws NotFoundException;
 }

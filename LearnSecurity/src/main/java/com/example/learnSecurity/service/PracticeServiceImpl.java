@@ -1,17 +1,26 @@
 package com.example.learnSecurity.service;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.learnSecurity.data.PracticeInstance;
-import com.example.learnSecurity.entity.Instance;
+import com.example.learnSecurity.data.PracticeView;
+import com.example.learnSecurity.data.link.LessonLinkView;
 import com.example.learnSecurity.entity.Practice;
 import com.example.learnSecurity.exception.NotFoundException;
-import com.example.learnSecurity.repository.InstanceRepository;
 import com.example.learnSecurity.repository.PracticeRepository;
+import com.vladsch.flexmark.ext.tables.TablesExtension;
+import com.vladsch.flexmark.html.HtmlRenderer;
+import com.vladsch.flexmark.parser.Parser;
+import com.vladsch.flexmark.util.ast.Node;
+import com.vladsch.flexmark.util.data.MutableDataSet;
 
 /** 実習関連処理実装クラス　*/
 @Service
@@ -21,7 +30,7 @@ public class PracticeServiceImpl  implements PracticeService{
 	PracticeRepository practiceRepo;
 	
 	@Autowired
-	InstanceRepository insRepo;
+	PracticeLessonService plService;
 	
 	@Override
 	public List<Practice> selectAllPractice() {
@@ -30,19 +39,55 @@ public class PracticeServiceImpl  implements PracticeService{
 		
 		return practiceList;
 	}
-
+	
 	@Override
-	public List<Instance> selectInstanceByUserId(Integer userId) {
-		List<Instance> insList = new ArrayList<>();
-		insRepo.findByUserId(userId).forEach(insList::add);
+	public PracticeView selectPracticeView(Integer practiceId) throws NotFoundException{
+		Practice practice = selectPractice(practiceId);
+		String readmePath = getPracticeDirPath(practice) + "/README.md";
+		String practiceInfo = markdownfileToHtml(readmePath);
+		List<LessonLinkView> relationLessonList = plService.selectRelationLesson(practiceId);
 		
-		return insList;
+		return new PracticeView(practice, practiceInfo, relationLessonList);
 	}
 
 	@Override
-	public PracticeInstance selectPracticeInstance(Integer insId) throws NotFoundException {
-		Instance ins      = insRepo.findById(insId).orElseThrow(() -> new NotFoundException("404 InstanceID : " + insId));
-		Practice practice = practiceRepo.findById(ins.getPracticeId()).orElseThrow(() -> new NotFoundException("404 PracticeID : " + insId));
-		return new PracticeInstance(ins, practice);
+	public String selectPracticeDirPath(Integer practiceId) throws NotFoundException{
+		Practice practice = selectPractice(practiceId);
+		return getPracticeDirPath(practice);
+	}
+	
+	
+	/** マークダウンファイルをHTML形式に変換 */
+	private String markdownfileToHtml(String filePath) {
+		MutableDataSet options = new MutableDataSet();
+		options.set(Parser.EXTENSIONS, 
+				Arrays.asList(TablesExtension.create()));
+
+	    Parser parser = Parser.builder(options).build();
+	    HtmlRenderer renderer = HtmlRenderer.builder(options).build();
+	    
+	    List<String> lines;
+		try {
+			lines = Files.readAllLines(Paths.get(filePath), StandardCharsets.UTF_8);
+		} catch (IOException e) {
+			return "";
+		}
+	    String markdown = String.join("  \n", lines);
+
+	    Node document = parser.parse(markdown);
+	    String html = renderer.render(document);
+	    
+	    return html;
+	}
+	
+	/** 実習情報からディレクトリの絶対パスを取得 */
+	private String getPracticeDirPath(Practice practice) {
+		return System.getenv("PRACTICE_DIR") + practice.getDirPath();
+	}
+	
+	/** 実習情報をDBから取得 */
+	private Practice selectPractice(Integer practiceId) throws NotFoundException {
+		return practiceRepo.findById(practiceId)
+				.orElseThrow(() -> new NotFoundException("404 PracticeID : " + practiceId));
 	}
 }
