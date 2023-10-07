@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+header{
+	background-color: #00ff00;
+	color: white;
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: bold;
+	font-size: 32px;
+}
+
+h1{
+	font-size: 46px;
+	font-weight: 900;
+}
+
+#userName{
+	font-family: 'Kiwi Maru', serif;
+}

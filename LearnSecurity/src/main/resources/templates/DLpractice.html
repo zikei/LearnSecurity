@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org" >
+<head>
+<title>LearnSecurity - インスタンス一覧</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/DLpractice.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@1&family=Kaisei+Opti&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Noto+Sans+JP&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header class="container-fleld">
+		<div class="col-12 row pt-3 pb-2">
+			<div class="col-8">
+				<h1 class="ml-5 head_title">XLS</h1>
+			</div>
+			
+			<div class="col-4 text-center align-center-item p-1">
+				<span id="userName">ユーザ名 : testuser</span>
+			</div>
+		</div>
+	</header>
+	
+	<main>
+    <div id = "master_box" class="container-field">
+    <div class="d-flex row m-0 p-0 w-auto h-auto">
+        <div class="container col-10 main_box">
+				<div class="border_box pt-2 pb-4 mt-5">
+					
+				<div class="row justify-content-center mt-5 title-box">
+					<div class="col-auto contentFile">
+						<span th:text = "${practice.practiceName}"></span>
+    				</div>
+				<!--ダウンロード -->
+					<div class="col-auto Download" >
+						<a th:href="@{'/LearnSecurity/Practice/' + ${practice.practiceId} + '/Download'}" class="btn btn_deza">ダウンロード</a>
+					</div>
+				</div>
+				
+				<br>
+				<!--ReadMe(説明 / 概要) -->
+				<div class="row">
+    				<div class="col-2"></div>
+    				<div class="col-auto ReadMe">
+        				<div th:utext="${practice.practiceInfo}"></div>
+    				</div>
+    				<div class="col-4"></div>
+    			</div>
+				<!--関連講義 -->
+				<div class="row">
+    				<div class="col-2"></div>
+    				<div class="col-8 chainStudy mb-3">
+						<h3 class="Study-tag mt-5">関連講義</h3>
+						<div class="mt-3" th:each="lesson : ${practice.relationLessonList}">
+						<a th:href="@{'/LearnSecurity/' + 'lesson/' + ${lesson.lessonId}}" th:text = "${lesson.lessonName}"></a><br>
+						</div>
+    				</div>
+    				<div class="col-4"></div>
+    			</div>
+				
+				</div>
+        </div>
+        <!--colを調整するための余白-->
+        <div class="col-1"></div>
+        
+        <!--ここからNavList -->
+        <div class="col-1 nav-list">
+            <ul class="list-unstyled"> <!-- Bootstrap リストスタイルを削除 -->
+                <li class="nav-item">
+                    <div class="Practice-nav text-center">
+                        <img src="/img/鉄壁のセキュリティ.png" height="60" width="60" alt="PracticeSecurity Icon"><br>
+                        <span class"nav-name">セキュリティ<br>実習</span>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <div class="Study-nav text-center">
+                        <img src="/img/積み重ねた本.png" height="60" width="60" alt="StudySecurity Icon"><br>
+                        <span class"nav-name">セキュリティ<br>講義</span>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <div class="Setting-nav text-center">
+                        <img src="/img/歯車.png" height="60" width="60" alt="Settings Icon"><br>
+                        <span class"nav-name">設定</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</main>
+
+</body>
+</html>

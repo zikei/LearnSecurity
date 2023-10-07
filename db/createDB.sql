@@ -49,3 +49,9 @@ create table Completion(
   foreign key(UserId) references Account(UserId) on update cascade on delete cascade,
   foreign key(LessonId) references Lesson(LessonId) on update cascade on delete cascade
 );
+
+
+-- 初期データ注入
+-- 実習情報
+insert into Practice (PracticeName,DirPath)
+  values('SQLインジェクション','/SqlInjection');

@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+	margin: 0;
+}
+
+ul li{
+	margin: 82.5% 0;
+}
+
+.nav-list{
+	background-color: gray;
+}
+
+.nav-name{
+	color: white;
+}
+
+.welcome_name{
+	font-size: 56px;
+	font-family: 'Kiwi Maru', serif;
+	border-bottom: 4px solid;
+}
+
+.content_name{
+	font-family: 'Kiwi Maru', serif;
+	font-size: 32px;
+}
+
+.Practice_box{
+	border: solid 3px gray;
+	border-radius: 10px;
+}
+
+.Practice_name{
+	font-size: 32px;
+	font-family: 'Kiwi Maru', serif;
+	font-weight: bold;
+}
+
+.border_box{
+	border: 3px solid gray;
+	border-radius: 12.5px;
+}
+
+.bottom_box{
+	border-bottom: 3px solid gray;
+	margin: 10px 50px;
+}
+
+.column_box{
+	font-size: 20px;
+	margin: 20px;
+}
+
+.nav-list{
+	font-size: 16px;
+	color: white;
+	font-family: 'Kiwi Maru', serif;
+}
+
+.nav-item img{
+	margin: 10px 0;
+}
