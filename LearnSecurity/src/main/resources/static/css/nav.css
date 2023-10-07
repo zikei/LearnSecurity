@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+ul{
+	margin: 0;
+}
+
+ul li{
+	margin: 82.5% 0;
+}
+
+.nav-list{
+	background-color: gray;
+	margin-top:5.5%;
+	font-size: 16px;
+	color: white;
+	font-family: 'Kiwi Maru', serif;
+}
+
+.nav-list a {
+	color: white;
+}
+
+.nav-item img{
+	margin: 10px 0;
+}

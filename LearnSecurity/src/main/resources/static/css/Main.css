@@ -4,32 +4,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-ul{
-	margin: 0;
-}
-
-ul li{
-	margin: 82.5% 0;
-}
-
-.nav-list{
-	background-color: gray;
-}
-
-.nav-name{
-	color: white;
+    font-family: 'Kiwi Maru', serif;
 }
 
 .welcome_name{
 	font-size: 56px;
-	font-family: 'Kiwi Maru', serif;
 	border-bottom: 4px solid;
 }
 
 .content_name{
-	font-family: 'Kiwi Maru', serif;
 	font-size: 32px;
 }
 
@@ -40,7 +23,6 @@ ul li{
 
 .Practice_name{
 	font-size: 32px;
-	font-family: 'Kiwi Maru', serif;
 	font-weight: bold;
 }
 
@@ -57,14 +39,4 @@ ul li{
 .column_box{
 	font-size: 20px;
 	margin: 20px;
-}
-
-.nav-list{
-	font-size: 16px;
-	color: white;
-	font-family: 'Kiwi Maru', serif;
-}
-
-.nav-item img{
-	margin: 10px 0;
 }
