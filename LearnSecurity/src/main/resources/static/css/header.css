@@ -9,10 +9,20 @@ header{
 }
 
 h1{
+	font-family: 'Josefin Sans', sans-serif;
 	font-size: 46px;
 	font-weight: 900;
+	color:white;
+}
+
+#head_link:hover{
+text-decoration: none;
 }
 
 #userName{
 	font-family: 'Kiwi Maru', serif;
+}
+
+#master_box{
+	margin-top: 5%;
 }

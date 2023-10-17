@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/nav.css">
   <link rel="stylesheet" href="/css/PracticeList.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@1&family=Kaisei+Opti&display=swap" rel="stylesheet">
@@ -13,16 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
 </head>
 <body>
-	<header class="container-fleld">
-		<div class="col-12 row pt-3 pb-2">
-			<div class="col-8">
-				<h1 class="ml-5 head_title">XLS</h1>
-			</div>
-			
-			<div class="col-4 text-center align-center-item p-1">
-				<span id="userName">ユーザ名 : testuser</span>
-			</div>
-		</div>
+	<header class="container-fleld fixed-top" th:include="header">
 	</header>
 	
 	<main>
@@ -52,30 +44,9 @@
         <div class="col-1"></div>
         
         <!--ここからNavList -->
-        <div class="col-1 nav-list">
-            <ul class="list-unstyled"> <!-- Bootstrap リストスタイルを削除 -->
-                <li class="nav-item">
-                    <div class="Practice-nav text-center">
-                        <img src="/img/鉄壁のセキュリティ.png" height="60" width="60" alt="PracticeSecurity Icon"><br>
-                        <span class"nav-name">セキュリティ<br>実習</span>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <div class="Study-nav text-center">
-                        <img src="/img/積み重ねた本.png" height="60" width="60" alt="StudySecurity Icon"><br>
-                        <span class"nav-name">セキュリティ<br>講義</span>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <div class="Setting-nav text-center">
-                        <img src="/img/歯車.png" height="60" width="60" alt="Settings Icon"><br>
-                        <span class"nav-name">設定</span>
-                    </div>
-                </li>
-            </ul>
+        <div class="col-1 nav-list fixed-top ml-auto" th:include="nav">
         </div>
+        
     </div>
     </div>
 </main>
