@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org" >
+<head>
+<title>LearnSecurity - 講義一覧</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/PracticeList.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@1&family=Kaisei+Opti&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Noto+Sans+JP&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header class="container-fleld fixed-top" th:include="header">
+	</header>
+	
+	<main>
+    <div id = "master_box" class="container-field">
+    <div class="d-flex row m-0 p-0 w-auto h-auto">
+        <div class="container col-10 main_box">
+				<h2 class="text-center m-4 p-2 contents_name">セキュリティ講義</h2>
+				<div class="border_box pt-2 pb-4 mt-5">
+				<div class="bottom_box row justify-content-center">
+					<div class="col-7 text-center Practice_name"><a><span>講義一覧</span></a></div>
+				</div>
+				
+				<!--後々説明いれるかもしれない -->
+				<div class="column_box row justify-content-center" th:each="lesson : ${LessonList}">
+					<div class="col-auto"></div>
+					<div class="col-5 text-center">
+						<a th:href = "@{'/LearnSecurity/'+ 'Lesson/' + ${lesson.lessonId}}">
+							<span th:text = "${lesson.lessonName}"></span>
+						</a>
+					</div>
+					<div class="col-auto"></div>
+				</div>
+				
+				</div>
+        </div>
+        <!--colを調整するための余白-->
+        <div class="col-1"></div>
+        
+        <!--ここからNavList -->
+        <div class="col-1 nav-list fixed-top ml-auto" th:include="nav">
+        </div>
+        
+    </div>
+    </div>
+</main>
+
+</body>
+</html>
