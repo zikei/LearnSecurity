@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.learnSecurity.data.link.LessonLinkView;
+import com.example.learnSecurity.data.link.PracticeLinkView;
 import com.example.learnSecurity.repository.LessonRepository;
 import com.example.learnSecurity.repository.PracticeLessonRepository;
 import com.example.learnSecurity.repository.PracticeRepository;
@@ -28,10 +29,20 @@ public class PracticeLessonServiceImpl implements PracticeLessonService {
 	
 	@Override
 	public List<LessonLinkView> selectRelationLesson(Integer practiceId) {
-		List<Integer> LessonIdList = plRepo.findBypracticeId(practiceId);
+		List<Integer> LessonIdList = plRepo.findByPracticeId(practiceId);
 		List<LessonLinkView>  LessonLinkList = new ArrayList<>();
 		lessonRepo.findAllById(LessonIdList).forEach(l -> LessonLinkList.add(new LessonLinkView(l)));
 		
 		return LessonLinkList;
+	}
+
+
+	@Override
+	public List<PracticeLinkView> selectRelationPractice(Integer lessonId) {
+		List<Integer> practiceIdList = plRepo.findByLessonId(lessonId);
+		List<PracticeLinkView>  practiceLinkList = new ArrayList<>();
+		practiceRepo.findAllById(practiceIdList).forEach(p -> practiceLinkList.add(new PracticeLinkView(p)));
+		
+		return practiceLinkList;
 	}
 }

@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.learnSecurity.data.LessonView;
 import com.example.learnSecurity.data.link.LessonLinkView;
 import com.example.learnSecurity.entity.Lesson;
+import com.example.learnSecurity.exception.NotFoundException;
 import com.example.learnSecurity.service.LessonService;
 
 /** 講義コントローラ */
@@ -24,13 +27,29 @@ public class LessonController {
 	
 	/** 講義一覧ページ　*/
 	@GetMapping
-	public String PracticeListView(Model model) {
-		List<Lesson>         lessonList     = lessonService.selectAllPractice();
+	public String lessonListView(Model model) {
+		List<Lesson>         lessonList     = lessonService.selectAllLesson();
 		List<LessonLinkView> lessonLinkList = makeLessonLinkViewList(lessonList);
 		
 		model.addAttribute("LessonList", lessonLinkList);
 		
 		return "LessonList";
+	}
+	
+	/** 講義ページ */
+	@GetMapping("/{LessonId}")
+	public String lessonView(@PathVariable Integer LessonId, Model model) {
+		LessonView lesson;
+		try {
+			lesson = lessonService.selectLessonView(LessonId);
+		} catch (NotFoundException e) {
+			model.addAttribute("errorMsg", "講義情報を取得できませんでした");
+			return "error";
+		}
+		
+		model.addAttribute("lesson", lesson);
+		
+		return "Lesson";
 	}
 	
 /* ====================================================================================================================== */
