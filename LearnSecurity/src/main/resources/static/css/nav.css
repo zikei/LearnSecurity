@@ -1,26 +1,41 @@
-@charset "UTF-8";
+/*nav.html */
 
-ul{
-	margin: 0;
+.nav-list {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  overflow-y: auto; /* スクロールバーを表示するように */
+  background-color: gray;
+  font-size: 16px;
+  font-family: 'Kiwi Maru', serif;
+  z-index: 1000;
+  padding-top: 150px;
 }
 
-ul li{
-	margin: 82.5% 0;
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.nav-list{
-	background-color: gray;
-	margin-top:5%;
-	font-size: 16px;
+ul li {
+  margin: 50px 0; /* リストアイテム間の余白の調整 */
+}
+
+.nav-item a {
 	color: white;
-	font-family: 'Kiwi Maru', serif;
-	z-index: -1;
 }
 
-.nav-list a {
-	color: white;
+/* 既存のホバー時のスタイル */
+.nav-item a:hover {
+  text-decoration: none;
+  opacity: 0.2;
+  transition: opacity 0.5s ease;
 }
 
-.nav-item img{
-	margin: 10px 0;
+/* ホバー解除時のスタイル */
+.nav-item a:not(:hover) {
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
