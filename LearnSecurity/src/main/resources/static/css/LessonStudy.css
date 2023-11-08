@@ -23,6 +23,31 @@
     line-height: 2;
 }
 
+.ReadMe{
+	font-family: 'Kiwi Maru', serif;
+	font-size: 24px;
+}
+
+.ReadMe ol{
+	margin-top: 5%;
+	margin-left: 10%;
+}
+
+.ReadMe h1{
+	margin-top: 5%;
+	padding-bottom: 1%;
+	border-bottom: #00ff00 solid 2px;
+}
+
+.ReadMe a, .ReadMe p{
+	margin-top: 2%;
+	font-size: 28px;
+}
+
+.ReadMe h2{
+	font-weight: bold;
+}
+
 .bottom_box{
 	border-bottom: 3px solid gray;
 	margin: 10px 50px;
