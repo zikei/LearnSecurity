@@ -21,8 +21,9 @@
     <div class="d-flex row m-0 p-0 w-auto h-auto">
 		<!-- メイン -->
         <div class="container col-10 main_box ml-5">
-				<div class = "px-5 pt-5 pb-2 border-bottom">
-					<h2 th:text = "${lesson.lessonName}"></h2>
+			<div class="border_box pt-2 pb-4 mt-5">
+				<div class = "px-5 pt-5 pb-2 title-box">
+					<h3 class="contentFile" th:text = "${lesson.lessonName}"></h3>
 				</div>
 				
 				<!--メインーコンテンツ部分 -->
@@ -36,14 +37,16 @@
 				
 				<div class="row">
     				<div class="col-2"></div>
-    				<div class="col-8 chainStudy mb-3">
-						<h3 class="Study-tag mt-5">関連実習</h3>
+    				<div class="col-8 chainPractice mb-3">
+						<h3 class="Practice-tag mt-5">関連実習</h3>
 						<div class="mt-3" th:each="practice : ${lesson.relationPracticeList}">
-						<a th:href="@{'/LearnSecurity/' + 'practice/' + ${practice.practiceId}}" th:text = "${practice.practiceName}"></a><br>
+						<a th:href="@{'/LearnSecurity/' + 'Practice/' + ${practice.practiceId}}" th:text = "${practice.practiceName}"></a><br>
 						</div>
     				</div>
     				<div class="col-4"></div>
     			</div>
+    			
+			</div>
 		</div>
 	</div>
 	 <!--ここからNavList include>>nav,html -->
