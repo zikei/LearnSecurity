@@ -58,4 +58,4 @@ insert into Practice (PracticeName,DirPath)
 
 -- 講義情報
 insert into Lesson (LessonName, LessonPath)
-  values('テスト','/lesson/test/test.md');
+  values('テスト','/test/test.md');

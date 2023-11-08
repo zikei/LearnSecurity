@@ -37,7 +37,7 @@ public class LessonServiceImpl  implements LessonService{
 	@Override
 	public LessonView selectLessonView(Integer lessonId) throws NotFoundException {
 		Lesson lesson = selectLesson(lessonId);
-		String lessonPath = lesson.getLessonPath();
+		String lessonPath = System.getenv("LESSON_DIR") + lesson.getLessonPath();
 		String lessonContent = toHtmlService.fileToHTML(Paths.get(lessonPath));
 		List<PracticeLinkView> relationPracList = plService.selectRelationPractice(lessonId);
 		
