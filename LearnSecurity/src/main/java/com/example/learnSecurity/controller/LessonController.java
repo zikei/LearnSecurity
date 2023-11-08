@@ -49,7 +49,7 @@ public class LessonController {
 		
 		model.addAttribute("lesson", lesson);
 		
-		return "Lesson";
+		return "LessonStudy";
 	}
 	
 /* ====================================================================================================================== */
