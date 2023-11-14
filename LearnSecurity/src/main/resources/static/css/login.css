@@ -32,7 +32,7 @@ main{
 	transform: scale(1.1);
 	font-family: 'Kiwi Maru', serif;
 	font-weight: bold;
-	font-size: 28px;
+	font-size: 24px;
     background-position: 0;
     border-radius: 20px;
     color: #fff;
@@ -45,7 +45,7 @@ main{
     border: 3px solid gray;
     box-shadow: 10px 10px 0 gray;
     color: black;
-    margin-top:5em;
+    margin-top:4em;
 }
 
 .form-group{

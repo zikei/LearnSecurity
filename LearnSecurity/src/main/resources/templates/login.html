@@ -43,11 +43,11 @@
                     <div class="col-6 border_box">
                         <h2 id="content_name" class="my-4 text-center font-weight-bold">ログイン</h2>
                         <div th:if="${param.error}">
-                            <span class="text-nowrap bd-highlight　text-center m"
+                            <span class="text-nowrap bd-highlight　text-center"
                                 style="width: 10rem; color: #ff0000;">※ID、またはパスワードが間違っています</span>
                         </div>
                         <form th:action="@{/LearnSecurity/Login}" method="post">
-                            <div class="form-group mt-5">
+                            <div class="form-group mt-3">
                                 <label for="username" class="font-weight-bold">ユーザー名</label>
                                 <input type="text" class="form-control" id="username" name="username">
                             </div>

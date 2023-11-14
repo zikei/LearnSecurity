@@ -20,8 +20,6 @@
 	font-size: 48px;
 	font-weight: 400;
     font-family: 'Zen Antique', serif;
-    animation: fadeIn 3s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
-    transition: 1s;
     margin-top: 60px;
     display: block;
 }
@@ -30,8 +28,6 @@
 	font-size: 72px;
 	font-weight: 400;
 	font-family: 'Zen Antique', serif;
-	animation: fadeIn 3s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
-    transition: 1s;
 }
 
 .btn {
@@ -65,4 +61,14 @@
 
 .btn::before{
 	color: #00ff00;
+}
+
+.fade-in{
+	animation: fadeIn 4s ease forwards;
+}
+
+.fade-in-delay{
+	 opacity: 0;
+     animation: fadeIn 4s ease forwards;
+     animation-delay: 2s; /* 適当な遅延時間を設定（秒数） */
 }
