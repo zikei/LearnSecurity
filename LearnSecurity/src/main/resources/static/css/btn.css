@@ -12,6 +12,7 @@
     background-image: linear-gradient(150deg, var(--color) 35%, transparent 50%);
     background-position: 100%;
     background-size: 300%;
+    background-color: white;
     color: var(--color);
     text-decoration: none;
     transition: all 1s ease;
