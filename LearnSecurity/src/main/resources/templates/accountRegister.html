@@ -7,17 +7,61 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Merriweather&family=Zen+Antique&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/accountCreate.css">
+    <link rel="stylesheet" href="/css/accountRegister.css">
+    <link rel="stylesheet" href="/css/btn.css">
 </head>
 <body>
 	<header class="container-fleld">
 		<div class="col-12 row pt-3 pb-2">
 			<div class="col-8">
-				<h1 class="ml-5"><a href="/LearnSecurity/Home" id = "header_logo">XLS</a></h1>
+				<a id="head_link" href="/LearnSecurity/Mypage"><h1 class="ml-5 head_title">XLS</h1></a>
 			</div>
-			<div class="col-4"></div>
+			
+			<div class="col-4 text-center align-center-item p-1">
+			</div>
 		</div>
 	</header>
+	
+	<div class="Register-wrap">
+		<div class="container col-12">
+			<div class="row justify-content-center">
+				<div class="col-auto"></div>
+				<div class="col-6 border_box">
+					<h2 class="p-2">アカウント登録</h2>
+					<form th:action="@{/LearnSecurity/Entry}" method="post"><!--  th:object="${accountEntryForm}" -->
+							<ul><!--th:if="${#fields.hasErrors('userName')}" -->
+								<!-- Error Message -->
+								<li><!-- th:each="err:${#fields.errors('userName')}" th:text="${err}" class="text-center text-nowrap bd-highlight"style="width: 8rem;" --></li>
+							</ul>
+						<div class="form-group p-2 mt-3">
+							<label for="username" class="font-weight-bold">ユーザー名</label>
+							<input type="text" class="form-control"><!--  th:field="*{userName}" -->
+						 </div>
+							<ul><!-- th:if="${#fields.hasErrors('password')}"- -->
+								<!-- Error Message -->
+								<li><!--  th:each="err:${#fields.errors('password')}" th:text="${err}" class="text-center text-nowrap bd-highlight" style="width: 8rem;" --></li>
+							</ul>
+						<div class="form-group p-2">
+							<label for="password" class="font-weight-bold">パスワード</label>
+							<input type="password" class="form-control"><!-- th:field="*{password}" -->
+						 </div>
+						 <!-- ButtonArea -->
+						<div class="d-flex mt-5">	
+							<div class="row justify-content-center mt-4 col-12">
+								<div class="col-auto mr-3">
+									<a href="#" class="btn">戻る</a>
+								</div>
+								<div class="col-auto ml-3">
+									<input type="submit" value="登録" class="btn"></input>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-auto"></div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
