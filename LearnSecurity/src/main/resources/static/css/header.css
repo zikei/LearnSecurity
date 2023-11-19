@@ -1,25 +1,38 @@
-@charset "UTF-8";
-
-header{
-	background-color: #00ff00;
-	font-family: 'Josefin Sans', sans-serif;
-	font-weight: bold;
-	font-size: 32px;
+/* header.css */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #00ff00;
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+  font-size: 32px;
 }
 
-#header_logo{
-	color: white;
-	text-decoration:none;
+h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 46px;
+  font-weight: 900;
+  color: white;
+  margin: 0; /* h1のデフォルトmarginの削除 */
 }
 
-h1{
-	font-size: 46px;
-	font-weight: 900;
-	font-family: 'Merriweather', serif;
-	font-style: oblique;
+#master_box {
+  padding-top: 100px; /* ヘッダーの高さ分の余白を追加 */
 }
 
-#userName{
-	font-family: 'Kiwi Maru', serif;
-	color: white;
+#head_link {
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+#head_link:hover {
+  text-decoration: none;
+}
+
+#userName {
+  font-family: 'Kiwi Maru', serif;
 }

@@ -27,10 +27,11 @@ public class WebSecurityConfig {
 				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 			)
 			.authorizeHttpRequests(authz -> authz
-					.requestMatchers("/img/**").permitAll()
-				)
+				.requestMatchers("/img/**").permitAll()
+			)
 			.authorizeHttpRequests((requests) -> requests
 				.requestMatchers("/LearnSecurity","/LearnSecurity/Home").permitAll()
+				.requestMatchers("/LearnSecurity/Entry").permitAll()
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
