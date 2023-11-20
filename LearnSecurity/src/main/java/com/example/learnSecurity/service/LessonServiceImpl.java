@@ -33,6 +33,15 @@ public class LessonServiceImpl  implements LessonService{
 		
 		return lessonList;
 	}
+	
+	@Override
+	public List<Lesson> searchLesson(String word) {
+		word.replace(' ', '%');
+		word = '%' + word + '%';
+		
+		List<Lesson> lessonList = lessonRepo.findSearchLessonName(word);
+		return lessonList;
+	}
 
 	@Override
 	public LessonView selectLessonView(Integer lessonId) throws NotFoundException {
