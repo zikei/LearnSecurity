@@ -9,7 +9,6 @@ create table Account(
   UserId int auto_increment,
   UserName varchar(50) unique,
   Password varchar(64),
-  LastLogin date,
   primary key(UserId)
 );
 
