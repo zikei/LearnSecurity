@@ -41,14 +41,10 @@ public class LessonController {
 	/** 講義検索　*/
 	@PostMapping
 	public String lessonSearch(@RequestParam String sword, Model model) {
-		System.out.println("1"+sword);
 		List<Lesson>         lessonList     = lessonService.searchLesson(sword);
-		System.out.println("2");
 		List<LessonLinkView> lessonLinkList = makeLessonLinkViewList(lessonList);
-		System.out.println("3");
 		
 		model.addAttribute("LessonList", lessonLinkList);
-		System.out.println("4");
 		return "LessonList";
 	}
 	
