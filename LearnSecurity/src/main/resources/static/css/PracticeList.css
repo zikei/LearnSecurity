@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+.main_box {
+	padding-bottom: 45px;
+}
+
 #create {
 	color:white;
 	font-family: 'Kiwi Maru', serif;

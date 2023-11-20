@@ -13,5 +13,9 @@ import com.example.learnSecurity.entity.PracticeLesson;
 public interface PracticeLessonRepository extends CrudRepository<PracticeLesson, Integer> {
 	/** 実習IDから関連する講義IDを全て取得する */
 	@Query("SELECT LessonId FROM PracticeLesson WHERE PracticeId = :practiceId")
-	List<Integer> findBypracticeId(Integer practiceId);
+	List<Integer> findByPracticeId(Integer practiceId);
+	
+	/** 実習IDから関連する講義IDを全て取得する */
+	@Query("SELECT PracticeId FROM PracticeLesson WHERE LessonId = :lessonId")
+	List<Integer> findByLessonId(Integer lessonId);
 }

@@ -55,3 +55,7 @@ create table Completion(
 -- 実習情報
 insert into Practice (PracticeName,DirPath)
   values('SQLインジェクション','/SqlInjection');
+
+-- 講義情報
+insert into Lesson (LessonName, LessonPath)
+  values('テスト','/test/test.md');
