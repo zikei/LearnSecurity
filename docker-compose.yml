@@ -17,8 +17,22 @@ services:
       context: .
       dockerfile: ./LearnSecurity/Dockerfile
     env_file: ./.env
+    volumes:
+      - ./practice:/opt/xls/practice
+      - ./lesson:/opt/xls/lesson
     ports:
       - "80:8080"
+
+  manager-app:
+    build:
+      context: .
+      dockerfile: ./LearnSecurityManager/Dockerfile
+    env_file: ./.env
+    volumes:
+      - ./practice:/opt/xls/practice
+      - ./lesson:/opt/xls/lesson
+    ports:
+      - "8080:8080"
 
 volumes:
   db-data-volume:
