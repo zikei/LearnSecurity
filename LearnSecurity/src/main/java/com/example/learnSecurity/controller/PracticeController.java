@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.learnSecurity.data.PageView;
 import com.example.learnSecurity.data.PracticeView;
 import com.example.learnSecurity.data.link.PracticeLinkView;
 import com.example.learnSecurity.entity.Practice;
@@ -36,27 +37,43 @@ public class PracticeController {
 	@Autowired
 	PracticeService practiceService;
 	
+	@Autowired
+	PageView<PracticeLinkView> pracPage;
+	
 /* ====================================================================================================================== */
 	
-	/** 実習一覧ページ　*/
+	/** pの値がない場合：実習一覧取得
+	 * pの値がある場合はそのページを表示 */
 	@GetMapping
-	public String PracticeListView(Model model) {
-		List<Practice>         pracList     = practiceService.selectAllPractice();
-		List<PracticeLinkView> pracLinkList = makePracticeLinkViewList(pracList);
+	public String PracticeList(Model model,  @RequestParam Integer p) {
+		if(p != null) return PracticeView(model, p);
+		List<Practice> pracList = practiceService.selectAllPractice();
+		makeLessonPage(pracList);
 		
-		model.addAttribute("pracList", pracLinkList);
-		
-		return "PracticeList";
+		return "redirect:/LearnSecurity/Practice?p=1";
 	}
 	
 	/** 実習検索　*/
 	@PostMapping
 	public String PracticeSearch(@RequestParam String sword, Model model) {
-		List<Practice>         pracList     = practiceService.searchPractice(sword);
-		List<PracticeLinkView> pracLinkList = makePracticeLinkViewList(pracList);
+		List<Practice> pracList = practiceService.searchPractice(sword);
+		makeLessonPage(pracList);
 		
-		model.addAttribute("pracList", pracLinkList);
+		return "redirect:/LearnSecurity/Practice?p=1";
+	}
+	
+	/** 実習表示 */
+	public String PracticeView(Model model, Integer page) {
+		if(page==null) return "redirect:/LearnSecurity/Lesson";
+		if(pracPage==null) return "redirect:/LearnSecurity/Lesson";
+		try {
+			pracPage.setPageNum(page);
+		} catch (NotFoundException e) {
+			 return "redirect:/LearnSecurity/Lesson";
+		}
 		
+		model.addAttribute("pracList", pracPage.getPageList());
+		model.addAttribute("page", pracPage);
 		return "PracticeList";
 	}
 	
@@ -126,6 +143,12 @@ public class PracticeController {
                 Files.copy(file.toPath(), zos);
         	}
         }
+	}
+	
+	/** 実習ページ作成 */
+	private void makeLessonPage(List<Practice> practiceList) {
+		List<PracticeLinkView> practiceLinkList = makePracticeLinkViewList(practiceList);
+		pracPage = new PageView<PracticeLinkView>(practiceLinkList);
 	}
 	
 	/** 実習リストをPracticeLinkViewListに変換 */
