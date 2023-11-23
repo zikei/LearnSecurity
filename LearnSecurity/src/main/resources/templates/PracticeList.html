@@ -22,11 +22,24 @@
     <div class="d-flex row m-0 p-0 w-auto h-auto">
         <div class="container col-10 main_box ml-5">
 				<h2 class="text-center m-4 p-2 contents_name">セキュリティ実習</h2>
+				<!-- ここにsearchを追加 -->
+                <div class="row justify-content-end">
+					<div class="col-md-6 ">
+						<form  th:action="@{/LearnSecurity/Practice}" method="post">
+							<div class="input-group">
+									<input type="text" name="sword" class="form-control" placeholder="検索">
+								<div class="input-group-append">
+									<button type="submit" class="btn btn-primary">検索</button>
+								</div>
+							 </div>
+						</form>
+					</div>
+				</div>
+				
 				<div class="border_box pt-2 pb-4 mt-5">
 				<div class="bottom_box row justify-content-center">
 					<div class="col-7 text-center Practice_name"><a><span>実習一覧</span></a></div>
 				</div>
-				
 				<!--後々説明いれるかもしれない -->
 				<div class="column_box row justify-content-center" th:each="practice : ${pracList}">
 					<div class="col-auto"></div>

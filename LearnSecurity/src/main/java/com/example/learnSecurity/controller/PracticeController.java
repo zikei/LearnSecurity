@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.learnSecurity.data.PracticeView;
 import com.example.learnSecurity.data.link.PracticeLinkView;
@@ -40,6 +42,17 @@ public class PracticeController {
 	@GetMapping
 	public String PracticeListView(Model model) {
 		List<Practice>         pracList     = practiceService.selectAllPractice();
+		List<PracticeLinkView> pracLinkList = makePracticeLinkViewList(pracList);
+		
+		model.addAttribute("pracList", pracLinkList);
+		
+		return "PracticeList";
+	}
+	
+	/** 実習検索　*/
+	@PostMapping
+	public String PracticeSearch(@RequestParam String sword, Model model) {
+		List<Practice>         pracList     = practiceService.searchPractice(sword);
 		List<PracticeLinkView> pracLinkList = makePracticeLinkViewList(pracList);
 		
 		model.addAttribute("pracList", pracLinkList);

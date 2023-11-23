@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.learnSecurity.data.LessonView;
 import com.example.learnSecurity.data.link.LessonLinkView;
@@ -33,6 +35,16 @@ public class LessonController {
 		
 		model.addAttribute("LessonList", lessonLinkList);
 		
+		return "LessonList";
+	}
+	
+	/** 講義検索　*/
+	@PostMapping
+	public String lessonSearch(@RequestParam String sword, Model model) {
+		List<Lesson>         lessonList     = lessonService.searchLesson(sword);
+		List<LessonLinkView> lessonLinkList = makeLessonLinkViewList(lessonList);
+		
+		model.addAttribute("LessonList", lessonLinkList);
 		return "LessonList";
 	}
 	

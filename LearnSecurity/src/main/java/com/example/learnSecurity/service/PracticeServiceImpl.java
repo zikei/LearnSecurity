@@ -35,6 +35,15 @@ public class PracticeServiceImpl  implements PracticeService{
 	}
 	
 	@Override
+	public List<Practice> searchPractice(String word) {
+		word.replace(' ', '%');
+		word = '%' + word + '%';
+		
+		List<Practice> practiceList = practiceRepo.findSearchPracticeName(word);
+		return practiceList;
+	}
+	
+	@Override
 	public PracticeView selectPracticeView(Integer practiceId) throws NotFoundException{
 		Practice practice = selectPractice(practiceId);
 		String readmePath = getPracticeDirPath(practice) + "/README.md";

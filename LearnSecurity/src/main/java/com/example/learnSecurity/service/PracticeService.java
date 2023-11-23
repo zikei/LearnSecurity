@@ -11,6 +11,9 @@ public interface PracticeService {
 	/** 実習を全件取得 */
 	List<Practice> selectAllPractice();
 	
+	/** 実習を検索 */
+	List<Practice> searchPractice(String word);
+	
 	/** 指定した実習表示情報を取得 */
 	PracticeView selectPracticeView(Integer practiceId) throws NotFoundException;
 	
