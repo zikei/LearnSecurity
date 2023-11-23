@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
 </head>
 <body>
+	
 	<header class="container-fleld fixed-top" th:include="header">
 	</header>
 	
@@ -22,6 +23,20 @@
     <div class="d-flex row m-0 p-0 w-auto h-auto">
         <div class="container col-10 main_box ml-5">
 				<h2 class="text-center m-4 p-2 contents_name">セキュリティ講義</h2>
+				<!-- 検索 -->
+				<div class="row justify-content-end">
+					<div class="col-md-6 ">
+						<form  th:action="@{/LearnSecurity/Lesson}" method="post">
+							<div class="input-group">
+									<input type="text" name="sword" class="form-control" placeholder="検索">
+								<div class="input-group-append">
+									<button type="submit" class="btn btn-primary">検索</button>
+								</div>
+							 </div>
+						</form>
+					</div>
+				</div>
+				<!-- 講義一覧 -->
 				<div class="border_box pt-2 pb-4 mt-5">
 				<div class="bottom_box row justify-content-center">
 					<div class="col-7 text-center Practice_name"><a><span>講義一覧</span></a></div>
