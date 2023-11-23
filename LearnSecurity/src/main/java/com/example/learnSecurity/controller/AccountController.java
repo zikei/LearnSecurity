@@ -74,7 +74,7 @@ public class AccountController {
 		
 		login(entryForm.getUserName(), entryForm.getPassword(), request);
 		
-		return Mypage();
+		return "redirect:/LearnSecurity/Mypage";
 	}
 	
 	/** 自動ログイン */
