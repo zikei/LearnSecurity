@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.learnSecurity.data.LessonView;
+import com.example.learnSecurity.data.PageView;
 import com.example.learnSecurity.data.link.LessonLinkView;
 import com.example.learnSecurity.entity.Lesson;
 import com.example.learnSecurity.exception.NotFoundException;
@@ -25,26 +26,43 @@ public class LessonController {
 	@Autowired
 	LessonService lessonService;
 	
+	@Autowired
+	PageView<LessonLinkView> lessonPage;
+	
 /* ====================================================================================================================== */
 	
-	/** 講義一覧ページ　*/
+	/** pの値がない場合：講義一覧取得
+	 * pの値がある場合はそのページを表示 */
 	@GetMapping
-	public String lessonListView(Model model) {
-		List<Lesson>         lessonList     = lessonService.selectAllLesson();
-		List<LessonLinkView> lessonLinkList = makeLessonLinkViewList(lessonList);
+	public String lessonListView(Model model,  @RequestParam Integer p) {
+		if(p != null) return lesssonView(model, p);
+		List<Lesson> lessonList = lessonService.selectAllLesson();
+		makeLessonPage(lessonList);
 		
-		model.addAttribute("LessonList", lessonLinkList);
-		
-		return "LessonList";
+		return "redirect:/LearnSecurity/Lesson?p=1";
 	}
 	
 	/** 講義検索　*/
 	@PostMapping
 	public String lessonSearch(@RequestParam String sword, Model model) {
-		List<Lesson>         lessonList     = lessonService.searchLesson(sword);
-		List<LessonLinkView> lessonLinkList = makeLessonLinkViewList(lessonList);
+		List<Lesson> lessonList = lessonService.searchLesson(sword);
+		makeLessonPage(lessonList);
 		
-		model.addAttribute("LessonList", lessonLinkList);
+		return "redirect:/LearnSecurity/Lesson?p=1";
+	}
+	
+	/** 講義表示 */
+	public String lesssonView(Model model, Integer page) {
+		if(page==null) return "redirect:/LearnSecurity/Lesson";
+		if(lessonPage==null) return "redirect:/LearnSecurity/Lesson";
+		try {
+			lessonPage.setPageNum(page);
+		} catch (NotFoundException e) {
+			 return "redirect:/LearnSecurity/Lesson";
+		}
+		
+		model.addAttribute("LessonList", lessonPage.getPageList());
+		model.addAttribute("page", lessonPage);
 		return "LessonList";
 	}
 	
@@ -65,6 +83,11 @@ public class LessonController {
 	}
 	
 /* ====================================================================================================================== */
+	/** 講義ページ作成 */
+	private void makeLessonPage(List<Lesson> lessonList) {
+		List<LessonLinkView> lessonLinkList = makeLessonLinkViewList(lessonList);
+		lessonPage = new PageView<LessonLinkView>(lessonLinkList);
+	}
 	
 	/** 講義リストをLessonLinkViewListに変換 */
 	private List<LessonLinkView> makeLessonLinkViewList(List<Lesson> LessonList){
