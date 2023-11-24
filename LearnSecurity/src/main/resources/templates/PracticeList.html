@@ -36,22 +36,66 @@
 					</div>
 				</div>
 				
-				<div class="border_box pt-2 pb-4 mt-5">
+			<div class="border_box pt-2 pb-2 mt-5">
 				<div class="bottom_box row justify-content-center">
 					<div class="col-7 text-center Practice_name"><a><span>実習一覧</span></a></div>
 				</div>
 				<!--後々説明いれるかもしれない -->
 				<div class="column_box row justify-content-center" th:each="practice : ${pracList}">
 					<div class="col-auto"></div>
-					<div class="col-5 text-center">
-						<a th:href = "@{'/LearnSecurity/'+ 'Practice/' + ${practice.practiceId}}">
-							<span th:text = "${practice.practiceName}"></span>
-						</a>
-					</div>
+						<div class="col-5 text-center">
+							<a th:href = "@{'/LearnSecurity/'+ 'Practice/' + ${practice.practiceId}}">
+								<span th:text = "${practice.practiceName}"></span>
+							</a>
+						</div>
 					<div class="col-auto"></div>
 				</div>
-				
-				</div>
+				<!-- ページング -->
+				<div class="col-12 d-flex justify-content-center">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+						 <!-- 最前のページへのリンク -->
+							<li class="page-item" th:if="${page.pageNum > 1}">
+								<a class="page-link" th:href="@{'/LearnSecurity/Practice?p=1'}" aria-label="First">
+									<span aria-hidden="true" class="pagination_link">&laquo;&laquo;</span>
+									<span class="sr-only">最前のページへ</span>
+								</a>
+							</li>
+						<!-- 前のページへのリンク -->
+							<li class="page-item" th:if="${page.pageNum > 1}">
+								<a class="page-link" th:href="@{'/LearnSecurity/Practice?p=' + ${page.pageNum - 1}}" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">前へ</span>
+								</a>
+							</li>
+						<!-- 中間のページリンク -->
+							<li class="page-item" th:each="i : ${#numbers.sequence(1, page.totalPages)}">
+								<a th:if="${i}==${page.pageNum}" class="page-link active">
+									<span th:text="${i}"></span>
+								</a>
+								<a th:if="${i}!=${page.pageNum}" th:href="@{'/LearnSecurity/Practice?p=' + ${i}}" class="page-link">
+									<span th:text="${i}"></span>
+								</a>
+							</li>
+							<!-- 次のページへのリンク -->
+								<li class="page-item" th:if="${page.pageNum < page.totalPages}">
+									<a class="page-link" th:href="@{'/LearnSecurity/Practice?p=' + ${page.pageNum + 1}}" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+										<span class="sr-only">次へ</span>
+									</a>
+								</li>
+							<!-- 最後のページへのリンク -->
+								<li class="page-item" th:if="${page.pageNum < page.totalPages}">
+									<a class="page-link" th:href="@{'/LearnSecurity/Practice?p=' + ${page.totalPages}}" aria-label="Last">
+										<span aria-hidden="true">&raquo;&raquo;</span>
+										<span class="sr-only">最後のページへ</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<!-- ページング終わり -->
+			</div>
         </div>
         <!--colを調整するための余白-->
         <div class="col-1"></div>

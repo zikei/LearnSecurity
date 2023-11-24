@@ -56,3 +56,7 @@
 	font-size: 28px;
 	font-family: 'Kiwi Maru', serif;
 }
+
+.pagenation {
+	list-style-type:none;
+}
