@@ -37,6 +37,7 @@ public class PageView<T> {
 		this.totalPages = (int) Math.ceil(list.size() / (double)PAGE_SIZE);
 		this.totalElements = list.size();
 		
+		// pageNum != 1は全ページ数が０の場合でも１ページ目は表示するため
 		if(pageNum > totalPages && pageNum != 1) throw new NotFoundException("Page NotFound");
 		this.pageNum = pageNum;
 	}
@@ -51,7 +52,9 @@ public class PageView<T> {
 	}
 	
 	public void setPageNum(int pageNum) throws NotFoundException {
-		if(pageNum > totalPages) throw new NotFoundException("Page NotFound");
+		System.out.println(pageNum);
+		System.out.println(totalPages);
+		if(pageNum > totalPages && pageNum != 1) throw new NotFoundException("Page NotFound");
 		this.pageNum = pageNum;
 	}
 	

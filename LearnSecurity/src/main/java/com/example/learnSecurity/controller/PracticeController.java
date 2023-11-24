@@ -45,7 +45,7 @@ public class PracticeController {
 	/** pの値がない場合：実習一覧取得
 	 * pの値がある場合はそのページを表示 */
 	@GetMapping
-	public String PracticeList(Model model,  @RequestParam Integer p) {
+	public String PracticeList(Model model,  @RequestParam(required = false) Integer p) {
 		if(p != null) return PracticeView(model, p);
 		List<Practice> pracList = practiceService.selectAllPractice();
 		makeLessonPage(pracList);

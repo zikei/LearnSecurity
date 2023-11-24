@@ -34,7 +34,7 @@ public class LessonController {
 	/** pの値がない場合：講義一覧取得
 	 * pの値がある場合はそのページを表示 */
 	@GetMapping
-	public String lessonListView(Model model,  @RequestParam Integer p) {
+	public String lessonListView(Model model, @RequestParam(required = false) Integer p) {
 		if(p != null) return lesssonView(model, p);
 		List<Lesson> lessonList = lessonService.selectAllLesson();
 		makeLessonPage(lessonList);
