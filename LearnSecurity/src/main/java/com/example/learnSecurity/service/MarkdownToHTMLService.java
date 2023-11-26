@@ -57,9 +57,9 @@ public class MarkdownToHTMLService implements ConversionToHTMLService{
 		while(imgM.find()) {
 			// path部分を取得
 			String path = imgM.group(1);
-			filePath = filePath.getParent();
+			String fPath = filePath.getParent() + "/" + path;
 			// 画像のフルパスを送信しているため要修正
-			String imgUrl = "http://localhost:8080/LearnSecurity/Img?p=" + filePath + "/" + path;
+			String imgUrl = "http://" + System.getenv("HOST_NAME") + "/LearnSecurity/Img?p=" + fPath;
 			
 			String target = imgM.group();
 			String replacement = target.replaceAll(Pattern.quote(path), imgUrl);
