@@ -36,7 +36,7 @@ public class LessonServiceImpl  implements LessonService{
 	
 	@Override
 	public List<Lesson> searchLesson(String word) {
-		word.replace(' ', '%');
+		word = word.replace(' ', '%');
 		word = '%' + word + '%';
 		
 		List<Lesson> lessonList = lessonRepo.findSearchLessonName(word);
