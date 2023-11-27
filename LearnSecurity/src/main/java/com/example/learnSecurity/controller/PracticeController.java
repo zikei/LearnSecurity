@@ -49,7 +49,7 @@ public class PracticeController {
 		if(p != null) return PracticeView(model, p);
 		List<Practice> pracList = practiceService.selectAllPractice();
 		makeLessonPage(pracList);
-		System.out.println(pracPage.getTotalPages());
+		
 		return "redirect:/LearnSecurity/Practice?p=1";
 	}
 	
@@ -148,7 +148,7 @@ public class PracticeController {
 	/** 実習ページ作成 */
 	private void makeLessonPage(List<Practice> practiceList) {
 		List<PracticeLinkView> practiceLinkList = makePracticeLinkViewList(practiceList);
-		pracPage = new PageView<PracticeLinkView>(new ArrayList<>());
+		pracPage = new PageView<PracticeLinkView>(practiceLinkList);
 	}
 	
 	/** 実習リストをPracticeLinkViewListに変換 */
