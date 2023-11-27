@@ -49,7 +49,7 @@ public class PracticeController {
 		if(p != null) return PracticeView(model, p);
 		List<Practice> pracList = practiceService.selectAllPractice();
 		makeLessonPage(pracList);
-		
+		System.out.println(pracPage.getTotalPages());
 		return "redirect:/LearnSecurity/Practice?p=1";
 	}
 	
@@ -64,12 +64,12 @@ public class PracticeController {
 	
 	/** 実習表示 */
 	public String PracticeView(Model model, Integer page) {
-		if(page==null) return "redirect:/LearnSecurity/Lesson";
-		if(pracPage==null) return "redirect:/LearnSecurity/Lesson";
+		if(page == null) return "redirect:/LearnSecurity/Practice";
+		if(pracPage.getFullList() == null) return "redirect:/LearnSecurity/Practice";
 		try {
 			pracPage.setPageNum(page);
 		} catch (NotFoundException e) {
-			 return "redirect:/LearnSecurity/Lesson";
+			 return "redirect:/LearnSecurity/Practice";
 		}
 		
 		model.addAttribute("pracList", pracPage.getPageList());
@@ -148,7 +148,7 @@ public class PracticeController {
 	/** 実習ページ作成 */
 	private void makeLessonPage(List<Practice> practiceList) {
 		List<PracticeLinkView> practiceLinkList = makePracticeLinkViewList(practiceList);
-		pracPage = new PageView<PracticeLinkView>(practiceLinkList);
+		pracPage = new PageView<PracticeLinkView>(new ArrayList<>());
 	}
 	
 	/** 実習リストをPracticeLinkViewListに変換 */
