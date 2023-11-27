@@ -36,7 +36,7 @@ public class PracticeServiceImpl  implements PracticeService{
 	
 	@Override
 	public List<Practice> searchPractice(String word) {
-		word.replace(' ', '%');
+		word = word.replace(' ', '%');
 		word = '%' + word + '%';
 		
 		List<Practice> practiceList = practiceRepo.findSearchPracticeName(word);
