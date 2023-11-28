@@ -7,9 +7,9 @@
 }
 
 img{
-	width: 100%;
+	width: 800px;
 	max-width: 100%;
-	height: auto;
+	height: 400px;
 	max-height: 100%;
 }
 
@@ -111,4 +111,29 @@ img{
 	padding-bottom: 1%;
 	margin-right:4%;
 	border-bottom: #00ff00 solid 2px;
+}
+
+/* PCメディアクエリ */
+@media only screen and (min-width: 1200px) {
+    img {
+        width: 100%; /* 画面幅に合わせて拡大縮小 */
+        height: auto; /* アスペクト比を保つ */
+        max-width: 1000px; /* 画像の最大幅を指定 */
+        max-height: none; /* max-heightを解除 */
+    }
+
+    /*PC向けのスタイル調整 */
+    .main_box {
+        padding-bottom: 60px;
+    }
+
+    .border_box {
+        padding: 3rem;
+    }
+
+    .ReadMe ol {
+        margin-left: 15%;
+    }
+
+    /* 他にも必要なスタイルの調整を追加 */
 }
