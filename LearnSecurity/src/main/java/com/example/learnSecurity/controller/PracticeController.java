@@ -64,12 +64,12 @@ public class PracticeController {
 	
 	/** 実習表示 */
 	public String PracticeView(Model model, Integer page) {
-		if(page==null) return "redirect:/LearnSecurity/Lesson";
-		if(pracPage==null) return "redirect:/LearnSecurity/Lesson";
+		if(page == null) return "redirect:/LearnSecurity/Practice";
+		if(pracPage.getFullList() == null) return "redirect:/LearnSecurity/Practice";
 		try {
 			pracPage.setPageNum(page);
 		} catch (NotFoundException e) {
-			 return "redirect:/LearnSecurity/Lesson";
+			 return "redirect:/LearnSecurity/Practice";
 		}
 		
 		model.addAttribute("pracList", pracPage.getPageList());

@@ -22,10 +22,18 @@ public class PageView<T> {
 	/** 現在のページ番号 */
 	private int pageNum;
 	
+	public PageView() {
+		this.list = null;
+		this.totalPages = 0;
+		this.totalElements = 0;
+		this.pageNum = 0;
+	}
+	
 	/** コントラスタ：ページ番号は１ */
 	public PageView(List<T> list) {
 		this.list = list;
 		this.totalPages = (int) Math.ceil(list.size() / (double)PAGE_SIZE);
+		if(this.totalPages == 0) this.totalPages = 1;
 		this.totalElements = list.size();
 		this.pageNum = 1;
 	}
@@ -35,10 +43,10 @@ public class PageView<T> {
 	public PageView(List<T> list, int pageNum) throws NotFoundException {
 		this.list = list;
 		this.totalPages = (int) Math.ceil(list.size() / (double)PAGE_SIZE);
+		if(this.totalPages == 0) this.totalPages = 1;
 		this.totalElements = list.size();
 		
-		// pageNum != 1は全ページ数が０の場合でも１ページ目は表示するため
-		if(pageNum > totalPages && pageNum != 1) throw new NotFoundException("Page NotFound");
+		if(pageNum > totalPages) throw new NotFoundException("Page NotFound");
 		this.pageNum = pageNum;
 	}
 	
@@ -52,8 +60,6 @@ public class PageView<T> {
 	}
 	
 	public void setPageNum(int pageNum) throws NotFoundException {
-		System.out.println(pageNum);
-		System.out.println(totalPages);
 		if(pageNum > totalPages && pageNum != 1) throw new NotFoundException("Page NotFound");
 		this.pageNum = pageNum;
 	}

@@ -53,8 +53,8 @@ public class LessonController {
 	
 	/** 講義表示 */
 	public String lesssonView(Model model, Integer page) {
-		if(page==null) return "redirect:/LearnSecurity/Lesson";
-		if(lessonPage==null) return "redirect:/LearnSecurity/Lesson";
+		if(page == null) return "redirect:/LearnSecurity/Lesson";
+		if(lessonPage.getFullList() == null) return "redirect:/LearnSecurity/Lesson";
 		try {
 			lessonPage.setPageNum(page);
 		} catch (NotFoundException e) {
