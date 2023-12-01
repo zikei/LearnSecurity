@@ -57,4 +57,8 @@ insert into Practice (PracticeName,DirPath)
 
 -- 講義情報
 insert into Lesson (LessonName, LessonPath)
+  values('SQLインジェクション','/SqlInjection1/SqlInjection1.md');
+
+-- test
+insert into Lesson (LessonName, LessonPath)
   values('テスト','/test/test.md');

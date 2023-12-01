@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vladsch.flexmark.ext.tables.TablesExtension;
+import com.vladsch.flexmark.ext.toc.TocExtension;
 import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.ast.Node;
@@ -29,8 +30,12 @@ public class MarkdownToHTMLService implements ConversionToHTMLService{
 	public String fileToHTML(Path filePath) {
 		MutableDataSet options = new MutableDataSet();
 		options.set(Parser.EXTENSIONS, 
-				Arrays.asList(TablesExtension.create()));
-
+				Arrays.asList(TablesExtension.create(),
+							  TocExtension.create()));
+		options.set(TocExtension.TITLE, "目次");
+		options.set(TocExtension.DIV_CLASS, "toc-box");
+		options.set(TocExtension.LIST_CLASS, "toc-list");
+		
 	    Parser parser = Parser.builder(options).build();
 	    HtmlRenderer renderer = HtmlRenderer.builder(options).build();
 	    
