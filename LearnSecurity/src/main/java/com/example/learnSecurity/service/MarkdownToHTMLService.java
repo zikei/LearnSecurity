@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +22,10 @@ import com.vladsch.flexmark.util.data.MutableDataSet;
 @Service
 @Transactional
 public class MarkdownToHTMLService implements ConversionToHTMLService{
-
+	/* 画像マークダウン正規表現:![*](*) **/
+	final private String IMG_REGEX = "!\\[.*\\]\\((.*)\\)";
+	final private Pattern IMG_PTN = Pattern.compile(IMG_REGEX);
+	
 	@Override
 	public String fileToHTML(Path filePath) {
 		MutableDataSet options = new MutableDataSet();
@@ -40,11 +45,32 @@ public class MarkdownToHTMLService implements ConversionToHTMLService{
 		} catch (IOException e) {
 			return "";
 		}
+		
 	    String markdown = String.join("  \n", lines);
+	    markdown = convImgPath(filePath, markdown);
 
 	    Node document = parser.parse(markdown);
 	    String html = renderer.render(document);
 	    
 	    return html;
+	}
+	
+	/** マークダウンの画像のパスを絶対パスに変換する */
+	private String convImgPath(Path filePath, String line) {
+		Matcher imgM = IMG_PTN.matcher(line);
+		
+		while(imgM.find()) {
+			// path部分を取得
+			String path = imgM.group(1);
+			String fPath = filePath.getParent() + "/" + path;
+			// 画像のフルパスを送信しているため要修正
+			String imgUrl = "http://" + System.getenv("HOST_NAME") + "/LearnSecurity/Img?p=" + fPath;
+			
+			String target = imgM.group();
+			String replacement = target.replaceAll(Pattern.quote(path), imgUrl);
+			
+			line = line.replaceAll(Pattern.quote(target), replacement);
+		}
+		return line;
 	}
 }
